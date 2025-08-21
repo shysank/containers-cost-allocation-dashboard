@@ -19,10 +19,12 @@ The name for the repository can be any valid name you'd like - for example, you 
 If you decided to use Private Repository in ECR, you'll have to configure your Docker client to log in to it first, before pushing the image to it.  
 You can find instructions on logging in to a Private Repository in ECR using Docker client, in [this document](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html).  
 
-Note for the image build process:  
-You might want to build for a target platform which is different from the source machine.  
+Note for the image build process: 
+- You might want to build for a target platform which is different from the source machine.  
 In this case, make sure you use [QEMU emulation](https://docs.docker.com/build/building/multi-platform/#qemu).  
 Please note that currently, the `Dockerfile` can be used to build images for `amd64` and `arm64` architectures.
+
+- If you're using `podman` to build the image, you should add the `format --docker` option to the `podman build` command. Otherwise the `ONBUILD` commands in the `Dockerfile` will not work as expected.
 
 In this section, choose either [Build and Push for a Single Platform](#build-and-push-for-a-single-platform) or [Build and Push for Multiple Platforms](#build-and-push-for-multiple-platforms).
 
