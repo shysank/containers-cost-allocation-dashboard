@@ -586,7 +586,7 @@ def execute_kubecost_allocation_api(tls_verify, root_ca_cert_path, kubecost_api_
             window = f'{start.strftime("%Y-%m-%dT%H:%M:%SZ")},{end.strftime("%Y-%m-%dT%H:%M:%SZ")}'
             if aggregate == "container":
                 params = {"window": window, "accumulate": accumulate, "step": step, "idle": idle,
-                          "splitIdle": split_idle, "idleByNode": idle_by_node, "shareTenancyCosts": share_tenancy_costs}
+                          "splitIdle": split_idle, "idleByNode": idle_by_node, "shareTenancyCosts": share_tenancy_costs, "aggregate": "cluster,node,namespace,controllerKind,controller,pod,container"}
             else:
                 params = {"window": window, "aggregate": aggregate, "accumulate": accumulate, "step": step,
                           "idle": idle, "splitIdle": split_idle, "idleByNode": idle_by_node,
