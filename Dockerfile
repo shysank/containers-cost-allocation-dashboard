@@ -56,6 +56,7 @@ FROM scratch AS create_non_root_user
 
 # Copying the users/passwords file from the build stage and switching to the non-root user
 COPY --from=build /etc/passwd /etc/passwd
+COPY --from=build /etc/group /etc/group
 USER nonroot
 
 ##############################
